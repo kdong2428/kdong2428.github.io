@@ -1,1 +1,249 @@
-hello world
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Kevin Dong - Portfolio</title>
+    <!-- Link Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <!-- Link your custom CSS file -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="lightbox.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <script>
+        window.addEventListener('scroll', function() {
+            var navbar = document.getElementById('navbar');
+            var navbarLogo = document.getElementsByClassName('navbar-brand');
+            var navbarLinks = document.querySelectorAll('#navbar .nav-link');
+
+            if (window.pageYOffset > 0) {
+                navbar.classList.add('navbar-scroll'); // Set background-color to white
+                navbarLogo[0].style.color = 'black';
+            } else {
+                navbar.classList.remove('navbar-scroll'); // Remove background-color
+                navbarLogo[0].style.color = '';
+            }
+
+            for (var i = 0; i < navbarLinks.length; i++) {
+                if (window.pageYOffset > 0) {
+                navbarLinks[i].style.color = 'black'; // Set the text color to black when scrolled
+                } else {
+                navbarLinks[i].style.color = ''; // Remove the text color
+                }
+            }
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <nav id="navbar" class="navbar navbar-expand-lg fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="#home">Kevin Dong</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#home">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#about">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#projects">Projects</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="jumbotron text-center">
+            <div class="d-flex align-items-center justify-content-center vh-100 animate__animated animate__fadeInUp">
+                <div class="text-center" style="color: #fff;">
+                    <h1 class="display-1">Kevin Dong</h1>
+                    <p>Full-Stack Web Developer</p>
+                    <a href="#about"><button class="vButton">About Me</button></a>
+                </div>
+            </div>
+        </section>        
+        
+        <section id="about" class="container">
+            <h2 class="heading">About Me</h2>
+            <div class="row mb-3">
+                <div class="col-sm-4 profileImg">
+                    <img src="1660714862776.jpeg"/>
+                </div>
+                <div class="col-sm-8">
+                    <p>I am a student studying computer science at the University of Southern California. Currently seeking a full-time position, I bring with me extensive experience as a full-stack web developer since 2018, having successfully developed over 20 websites, including dynamic web applications.</p>
+                    <div class="extra-content">
+                        <p>Throughout my academic journey, I have acquired a strong foundation in computer science principles and programming languages. My coursework, combined with hands-on projects, has equipped me with a deep understanding of software development and web technologies. I thrive on the challenges of turning ideas into functional and visually appealing websites that engage users.</p>
+                        <p>In addition to my passion for web development, I embrace an active and balanced lifestyle outside of coding. During my free time, you can often find me lacing up my running shoes and hitting the pavement, enjoying the adrenaline of a good run. I also find joy in playing basketball with friends, as it combines my competitive spirit and love for teamwork.</p>
+                    </div>
+                    <a href="#" id="read-more-link">Read more</a>
+                    <div>Contact me: <a href="mailto:kevindon@usc.edu">kevindon@usc.edu</a></div>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <h3>Skills:</h3>
+                <div class="col">
+                    <ul class="a">
+                        <li>Javascript</li>
+                        <li>ReactJS</li>
+                        <li>Java</li>
+                        <li>C++</li>
+                        <li>PHP</li>
+                        <li>HTML/CSS</li>
+                      </ul>
+                </div>
+                <div class="col">
+                    <ul class="a">
+                        <li>Spring</li>
+                        <li>Maven</li>
+                        <li>Git</li>
+                        <li>GitFlow</li>
+                        <li>Agile Development (Scrum)</li>
+                      </ul>
+                </div>
+                <div class="col">
+                    <ul class="a">
+                        <li>Docker</li>
+                        <li>AWS</li>
+                        <li>Ubtunu</li>
+                        <li>SQL/NoSQL</li>      
+                      </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2>Featured Projects</h2>
+            <div class="container">
+                <!-- Movie Time App -->
+                <div class="project">
+                    <div class="projectDescription">
+                        <h3 class="mb-0">Movie Time</h3>
+                        <p style="font-style: italic;">React, Java, MongoDB, Spring, Maven, GitFlow</p>
+                        <p>Led a 5-person team following Scrum development to create a dynamic movie search and watchlist application utilizing The Movie Database API to enable users to search for movies while implementing watchlist management functionality, enabling additions, deletions, copying, and rearrangement of movies within watchlists.</p>
+                    </div>
+                    <div class="row projectImages">
+                        <div class="col-sm-3">
+                            <img src="movietime_img_2.png" alt="Searching for Iron Man movies" onclick="openLightbox(this)"/>
+                        </div>
+                        <div class="col-sm-3">
+                            <img src="movietime_img_1.png" alt="Searching for movies with Tom Holland" onclick="openLightbox(this)"/>
+                        </div>
+                        <div class="col-sm-3">
+                            <img src="movietime_img_4_new.png" alt="Showing Watchlists for user" onclick="openLightbox(this)"/>
+                        </div>
+                        <div class="col-sm-3">
+                            <img src="movietime_img_3_new.png" alt="Showing movies for action watchlist" onclick="openLightbox(this)"/>
+                        </div>
+                    </div>
+                </div>
+                <!-- END -->
+                <!-- DHAL MENU APP -->
+                <div class="project">
+                    <div class="projectDescription">
+                        <h3 class="mb-0">DHAL Menu App</h3>
+                        <p style="font-style: italic;">JavaScript, JQuery, PHP, HTML, CSS, Bootstrap</p>
+                        <p>Transformed the dining experience at Delaware Highlands Assisted Living in by designing and developing a dynamic web application that replaced paper menus with real-time menu displays on TVs.</p>
+                    </div>
+                    <div class="row projectImages">
+                        <div class="col-sm-3">
+                            <img src="dhal_img_1.jpeg" alt="DHAL Eldery Looking at Menu" onclick="openLightbox(this)"/>
+                        </div>
+                        <div class="col-sm-3">
+                            <img src="dhal_img_2.jpeg" alt="DHAL Menu on TV" onclick="openLightbox(this)"/>
+                        </div>
+                        <div class="col-sm-3">
+                            <img src="dhal_img_3.jpeg" alt="DHAL Menu App" onclick="openLightbox(this)"/>
+                        </div>
+                        <div class="col-sm-3">
+                            <img src="dhal_img_4.jpeg" alt="DHAL Menu App Edit Mode" onclick="openLightbox(this)"/>
+                        </div>
+                    </div>
+                </div>
+                <!-- END -->
+                <!-- RACHELS KITCHEN -->
+                <div class="project">
+                    <div class="projectDescription">
+                        <h3 class="mb-0">Rachels Kitchen Menu</h3>
+                        <p style="font-style: italic;">JavaScript, PHP, HTML, CSS</p>
+                        <p>Integrated an innovative menu display application into the Rachel's Kitchen website, enabling dynamic filtering of menu items by various categories, dietary restrictions, and locations.</p>
+                    </div>
+                    <div class="row projectImages">
+                        <div class="col-sm-3">
+                            <img src="rachels_img_1.png" alt="Rachels Kitchen Menu" onclick="openLightbox(this)"/>
+                        </div>
+                        <div class="col-sm-3">
+                            <img src="rachels_img_4.png" alt="Rachels Kitchen Our Menu" onclick="openLightbox(this)"/>
+                            
+                        </div>
+                        <div class="col-sm-3">
+                            <img src="rachels_img_3.png" alt="Rachels Kitchen Signature Salad" onclick="openLightbox(this)"/>
+                        </div>
+                        <div class="col-sm-3">
+                            <img src="rachels_img_2.png" alt="Rachels Kitchen Sandwich" onclick="openLightbox(this)"/>
+                        </div>
+                    </div>
+                </div>
+                <!-- END -->
+            </div>
+        </section>
+    </main>
+
+    <footer class="text-center">
+        <p>&copy; 2023 Kevin Dong</p>
+    </footer>
+
+    <!-- The lightbox overlay -->
+    <div id="lightbox" class="lightbox-overlay">
+        <span class="close-button" onclick="closeLightbox()">&times;</span>
+        <img id="lightbox-image" src="" alt="Lightbox Image">
+    </div>
+
+    <!-- Link Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // Init animation
+        new WOW().init();
+
+        // Read More Text
+        var readMoreLink = document.getElementById('read-more-link');
+        var extraContent = document.querySelector('.extra-content');
+
+        readMoreLink.addEventListener('click', function(event) {
+            event.preventDefault();
+            
+            if (window.getComputedStyle(extraContent).display === 'none') {
+                extraContent.style.display = 'block';
+                setTimeout(function() {
+                    extraContent.style.opacity = '1';
+                }, 10);
+                readMoreLink.textContent = 'Read less';
+            } else {
+                extraContent.style.opacity = '0';
+                setTimeout(function() {
+                    extraContent.style.display = 'none';
+                }, 300);
+                readMoreLink.textContent = 'Read more';
+            }
+        });
+
+        // Hide overlay when clicking outside of the image
+        const overlay = document.getElementById('lightbox');
+        window.addEventListener('click', (event) => {
+            if (event.target === overlay) {
+                closeLightbox()();
+            }
+        });
+    </script>
+</body>
+</html>
