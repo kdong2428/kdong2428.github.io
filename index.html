@@ -1,249 +1,352 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Kevin Dong - Portfolio</title>
-    <!-- Link Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <!-- Link your custom CSS file -->
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="lightbox.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
-    <script>
-        window.addEventListener('scroll', function() {
-            var navbar = document.getElementById('navbar');
-            var navbarLogo = document.getElementsByClassName('navbar-brand');
-            var navbarLinks = document.querySelectorAll('#navbar .nav-link');
 
-            if (window.pageYOffset > 0) {
-                navbar.classList.add('navbar-scroll'); // Set background-color to white
-                navbarLogo[0].style.color = 'black';
-            } else {
-                navbar.classList.remove('navbar-scroll'); // Remove background-color
-                navbarLogo[0].style.color = '';
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Kevin Dong - Portfolio</title>
+        <!-- Link Font Family -->
+        <link
+            href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+            rel="stylesheet">
+        <style>
+            html {
+                scroll-behavior: smooth;
+                /* Smooth scrolling for anchor links */
+                scroll-padding-top: 80px;
+                /* Adjust this value based on your header's height */
             }
 
-            for (var i = 0; i < navbarLinks.length; i++) {
-                if (window.pageYOffset > 0) {
-                navbarLinks[i].style.color = 'black'; // Set the text color to black when scrolled
-                } else {
-                navbarLinks[i].style.color = ''; // Remove the text color
+            body {
+                margin: 0;
+                font-family: 'Raleway';
+                color: #444;
+                background-color: #fff;
+                line-height: 1.6;
+            }
+
+            .container {
+                max-width: 800px;
+                margin: 0 auto;
+                padding: 30px;
+            }
+
+            nav {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 15px 20px;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                background-color: #fff;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                z-index: 1000;
+            }
+
+            nav .navbar-brand {
+                font-size: 1.5em;
+                text-decoration: none;
+                color: #000;
+            }
+
+            nav ul {
+                list-style: none;
+                display: flex;
+                margin: 0;
+                padding: 0;
+            }
+
+            nav ul li {
+                margin: 0 10px;
+            }
+
+            nav ul li a {
+                text-decoration: none;
+                color: #000;
+                font-size: 1em;
+            }
+
+            a {
+                color: #000;
+            }
+
+            main {
+                padding-top: 80px;
+            }
+
+            #about {
+                padding-top: 57px;
+                margin-bottom: 40px;
+            }
+
+            h2 {
+                font-size: 2em;
+            }
+
+            h3 {
+                margin: 0;
+                font-size: 1.5em;
+            }
+
+            h2,
+            h3 {
+                font-weight: 500;
+            }
+
+            #about,
+            h2 {
+                text-align: center;
+            }
+
+            #about p {
+                text-align: left;
+            }
+
+            .profile img {
+                border-radius: 50%;
+                width: 150px;
+                height: 150px;
+                object-fit: cover;
+                margin-bottom: 15px;
+            }
+
+            .projects {
+                margin-top: 40px;
+            }
+
+            .projects h2 {
+                padding-bottom: 15px;
+            }
+
+            .project {
+                margin-bottom: 20px;
+                padding: 20px;
+                border-radius: 5px;
+                background-color: #fff;
+                box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05), 0 -2px 12px rgba(0, 0, 0, 0.05);
+            }
+
+            .project p {
+                margin: 10px 0;
+            }
+
+            .project .tech {
+                font-style: italic;
+                margin-top: 0px;
+            }
+
+            .project-images {
+                display: flex;
+                gap: 10px;
+                margin-top: 10px;
+                flex-wrap: wrap;
+                justify-content: space-between;
+            }
+
+            .project-images img {
+                width: calc(50% - 10px);
+                border-radius: 5px;
+                cursor: pointer;
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                /* Subtle shadow around the image */
+            }
+
+            .project-images img:hover {
+                transform: scale(1.05);
+            }
+
+            footer {
+                text-align: center;
+                padding: 10px 0;
+                border-top: 1px solid #ccc;
+                margin-top: 40px;
+                font-size: 0.9em;
+            }
+
+            /* Media query for screen width 480px or less */
+            @media screen and (max-width: 480px) {}
+
+            /* Lightbox Modal */
+            .lightbox-modal {
+                display: none;
+                /* Hidden by default */
+                position: fixed;
+                z-index: 1000;
+                /* Ensures modal is on top */
+                left: 0;
+                top: 0;
+                width: 100%;
+                /* Full width */
+                height: 100%;
+                /* Full height */
+                background-color: rgba(0, 0, 0, 0.7);
+                /* Dark background */
+                align-items: center;
+                /* Center the modal vertically */
+                justify-content: center;
+                /* Center the modal horizontally */
+            }
+
+            /* Modal content (image) */
+            .lightbox-modal .modal-content {
+                max-width: 600px;
+                /* Max width of the image */
+                width: 100%;
+                /* Ensures the image fills up to the max width */
+                height: auto;
+                /* Maintains aspect ratio */
+                margin: auto;
+                /* Centers the image */
+                border-radius: 5px;
+                padding: 20px;
+            }
+
+            /* Close button */
+            .close {
+                position: absolute;
+                top: 10px;
+                right: 20px;
+                color: #fff;
+                font-size: 40px;
+                cursor: pointer;
+                z-index: 1001;
+                /* Makes sure the close button is above the modal content */
+            }
+
+            .close:hover,
+            .close:focus {
+                color: #bbb;
+                text-decoration: none;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+
+    <body>
+        <header>
+            <nav>
+                <a class="navbar-brand" href="#home">Kevin Dong</a>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main class="container">
+            <section id="about" class="profile">
+                <h2>About Me</h2>
+                <img src="IMG_5027.jpg" alt="Profile Picture">
+                <p>
+                    I hold a degree in Computer Science from the University of Southern California, where I
+                    developed a strong foundation in software development and problem-solving. During my time at
+                    USC, I worked part-time as a web developer, gaining hands-on experience in creating web
+                    applications and microservices.
+                </p>
+                <p>
+                    I am currently a Software Engineer at Go Local Interactive, a marketing agency specializing
+                    in self-storage solutions. Here, I leverage my technical skills to build and optimize
+                    software that drives marketing strategies and enhances client engagement.
+                </p>
+                <p>
+                    Outside of work, I am passionate about staying active and exploring new technologies. I
+                    enjoy going to the gym, playing basketball, and reading articles about the current
+                    technological trends.
+                </p>
+            </section>
+
+            <section id="projects" class="projects">
+                <h2>Featured Projects</h2>
+
+                <div class="project">
+                    <h3>Visyfy Lightbox Plugin</h3>
+                    <p class="tech">JavaScript, JQuery, PHP, HTML, CSS</p>
+                    <p>
+                        Developed a WordPress plugin that allows admin users to manage media content directly on the
+                        front-end, simplifying the process of creating lightbox posts. This plugin is currently used to
+                        manage 100 client accounts.
+                    </p>
+                    <div class="project-images">
+                        <img src="visyfy_lightbox_plugin_img_1.png" alt="Visyfy Lightbox Plugin Image 1"
+                            class="lightbox">
+                        <img src="visyfy_lightbox_plugin_img_2.png" alt="Visyfy Lightbox Plugin Image 2"
+                            class="lightbox">
+                    </div>
+                </div>
+                </div>
+
+                <div class="project">
+                    <h3>DHAL Menu App</h3>
+                    <p class="tech">JavaScript, JQuery, PHP, HTML, CSS</p>
+                    <p>
+                        Transformed the dining experience at Delaware Highlands Assisted Living by designing and
+                        developing a dynamic web application that replaced paper menus with real-time menu displays on
+                        TVs.
+                    </p>
+                    <div class="project-images">
+                        <img src="dhal_img_1.jpeg" alt="DHAL Menu Image 1" class="lightbox">
+                        <img src="dhal_img_2.jpeg" alt="DHAL Menu Image 2" class="lightbox">
+                    </div>
+                </div>
+
+                <div class="project">
+                    <h3>Rachel's Kitchen Menu</h3>
+                    <p class="tech">JavaScript, PHP, HTML, CSS</p>
+                    <p>
+                        Developed an engaging and dynamic menu display for Rachel's Kitchen, a popular Las Vegas chain
+                        celebrated for its fresh, health-conscious, and vegan-friendly meal options.
+                    </p>
+                    <div class="project-images">
+                        <img src="rachels_img_1.png" alt="Rachel's Kitchen Image 1" class="lightbox">
+                        <img src="rachels_img_2.png" alt="Rachel's Kitchen Image 2" class="lightbox">
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer id="contact">
+            <p>Contact me: <a href="mailto:kdong2824@gmail.com">kdong2824@gmail.com</a></p>
+            <p>&copy; 2024 Kevin Dong</p>
+        </footer>
+        <!-- Lightbox Modal -->
+        <div id="lightboxModal" class="lightbox-modal">
+            <span class="close">&times;</span>
+            <img class="modal-content" id="modalImg">
+        </div>
+        <script>
+            // Get the modal and image elements
+            var modal = document.getElementById("lightboxModal");
+            var modalImg = document.getElementById("modalImg");
+            var close = document.getElementsByClassName("close")[0];
+
+            // Get all images with class "lightbox"
+            var images = document.querySelectorAll('.lightbox');
+
+            // Open the lightbox when an image is clicked
+            images.forEach(function (image) {
+                image.onclick = function () {
+                    modal.style.display = "flex";  // Use flex to align content
+                    modalImg.src = this.src; // Set modal image source to clicked image source
+                }
+            });
+
+            // Close the lightbox when the close button is clicked
+            close.onclick = function () {
+                modal.style.display = "none";
+            }
+
+            // Close the modal if the user clicks anywhere outside the modal content (on the background)
+            modal.onclick = function (event) {
+                if (event.target === modal) {
+                    modal.style.display = "none";
                 }
             }
-        });
-    </script>
-</head>
-<body>
-    <header>
-        <nav id="navbar" class="navbar navbar-expand-lg fixed-top">
-            <div class="container">
-                <a class="navbar-brand" href="#home">Kevin Dong</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#home">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#about">About</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#projects">Projects</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
 
-    <main>
-        <section id="home" class="jumbotron text-center">
-            <div class="d-flex align-items-center justify-content-center vh-100 animate__animated animate__fadeInUp">
-                <div class="text-center" style="color: #fff;">
-                    <h1 class="display-1">Kevin Dong</h1>
-                    <p>Full-Stack Developer</p>
-                    <a href="#about"><button class="vButton">About Me</button></a>
-                </div>
-            </div>
-        </section>        
-        
-        <section id="about" class="container">
-            <h2 class="heading">About Me</h2>
-            <div class="row mb-3">
-                <div class="col-sm-4 profileImg">
-                    <img src="1660714862776.jpeg"/>
-                </div>
-                <div class="col-sm-8">
-                    <p>I am a student studying computer science at the University of Southern California. Currently seeking a full-time position, I bring with me extensive experience as a full-stack developer since 2019, having successfully developed over 20 websites, including dynamic web applications using HTML/CSS/JavaScript/JQuery/PHP.</p>
-                    <div class="extra-content">
-                        <p>Throughout my academic journey, I have acquired a strong foundation in computer science principles and programming languages. My coursework, combined with hands-on projects, has equipped me with a deep understanding of software development and web technologies. I thrive on the challenges of turning ideas into functional and visually appealing websites that engage users.</p>
-                        <p>In addition to my passion for software development, I embrace an active and balanced lifestyle outside of coding. During my free time, you can often find me lacing up my running shoes and hitting the pavement, enjoying the adrenaline of a good run. I also find joy in playing basketball with friends, as it combines my competitive spirit and love for teamwork.</p>
-                    </div>
-                    <a href="#" id="read-more-link">Read more</a>
-                    <div>Contact me: <a href="mailto:kevindon@usc.edu">kevindon@usc.edu</a></div>
-                </div>
-            </div>
-            <div class="row mb-3">
-                <h3>Skills:</h3>
-                <div class="col">
-                    <ul class="a">
-                        <li>Javascript</li>
-                        <li>ReactJS</li>
-                        <li>Java</li>
-                        <li>C++</li>
-                        <li>PHP</li>
-                        <li>HTML/CSS</li>
-                      </ul>
-                </div>
-                <div class="col">
-                    <ul class="a">
-                        <li>Spring</li>
-                        <li>Maven</li>
-                        <li>Git</li>
-                        <li>GitFlow</li>
-                        <li>Agile Development (Scrum)</li>
-                      </ul>
-                </div>
-                <div class="col">
-                    <ul class="a">
-                        <li>Docker</li>
-                        <li>AWS</li>
-                        <li>Ubtunu</li>
-                        <li>SQL/NoSQL</li>      
-                      </ul>
-                </div>
-            </div>
-        </section>
+        </script>
+    </body>
 
-        <section id="projects">
-            <h2>Featured Projects</h2>
-            <div class="container">
-                <!-- Movie Time App -->
-                <div class="project">
-                    <div class="projectDescription">
-                        <h3 class="mb-0">Movie Time</h3>
-                        <p style="font-style: italic;">React, Java, MongoDB, Spring, Maven, GitFlow</p>
-                        <p>Led a 5-person team following Scrum development to create a dynamic movie search and watchlist application utilizing The Movie Database API to enable users to search for movies while implementing watchlist management functionality, enabling additions, deletions, copying, and rearrangement of movies within watchlists.</p>
-                    </div>
-                    <div class="row projectImages">
-                        <div class="col-sm-3">
-                            <img src="movietime_img_2.png" alt="Searching for Iron Man movies" onclick="openLightbox(this)"/>
-                        </div>
-                        <div class="col-sm-3">
-                            <img src="movietime_img_1.png" alt="Searching for movies with Tom Holland" onclick="openLightbox(this)"/>
-                        </div>
-                        <div class="col-sm-3">
-                            <img src="movietime_img_4_new.png" alt="Showing Watchlists for user" onclick="openLightbox(this)"/>
-                        </div>
-                        <div class="col-sm-3">
-                            <img src="movietime_img_3_new.png" alt="Showing movies for action watchlist" onclick="openLightbox(this)"/>
-                        </div>
-                    </div>
-                </div>
-                <!-- END -->
-                <!-- DHAL MENU APP -->
-                <div class="project">
-                    <div class="projectDescription">
-                        <h3 class="mb-0">DHAL Menu App</h3>
-                        <p style="font-style: italic;">JavaScript, JQuery, PHP, HTML, CSS, Bootstrap</p>
-                        <p>Transformed the dining experience at Delaware Highlands Assisted Living in by designing and developing a dynamic web application that replaced paper menus with real-time menu displays on TVs.</p>
-                    </div>
-                    <div class="row projectImages">
-                        <div class="col-sm-3">
-                            <img src="dhal_img_1.jpeg" alt="DHAL Eldery Looking at Menu" onclick="openLightbox(this)"/>
-                        </div>
-                        <div class="col-sm-3">
-                            <img src="dhal_img_2.jpeg" alt="DHAL Menu on TV" onclick="openLightbox(this)"/>
-                        </div>
-                        <div class="col-sm-3">
-                            <img src="dhal_img_3.jpeg" alt="DHAL Menu App" onclick="openLightbox(this)"/>
-                        </div>
-                        <div class="col-sm-3">
-                            <img src="dhal_img_4.jpeg" alt="DHAL Menu App Edit Mode" onclick="openLightbox(this)"/>
-                        </div>
-                    </div>
-                </div>
-                <!-- END -->
-                <!-- RACHELS KITCHEN -->
-                <div class="project">
-                    <div class="projectDescription">
-                        <h3 class="mb-0">Rachels Kitchen Menu</h3>
-                        <p style="font-style: italic;">JavaScript, PHP, HTML, CSS</p>
-                        <p>Integrated an innovative menu display application into the Rachel's Kitchen website, enabling dynamic filtering of menu items by various categories, dietary restrictions, and locations.</p>
-                    </div>
-                    <div class="row projectImages">
-                        <div class="col-sm-3">
-                            <img src="rachels_img_1.png" alt="Rachels Kitchen Menu" onclick="openLightbox(this)"/>
-                        </div>
-                        <div class="col-sm-3">
-                            <img src="rachels_img_4.png" alt="Rachels Kitchen Our Menu" onclick="openLightbox(this)"/>
-                            
-                        </div>
-                        <div class="col-sm-3">
-                            <img src="rachels_img_3.png" alt="Rachels Kitchen Signature Salad" onclick="openLightbox(this)"/>
-                        </div>
-                        <div class="col-sm-3">
-                            <img src="rachels_img_2.png" alt="Rachels Kitchen Sandwich" onclick="openLightbox(this)"/>
-                        </div>
-                    </div>
-                </div>
-                <!-- END -->
-            </div>
-        </section>
-    </main>
-
-    <footer class="text-center">
-        <p>&copy; 2023 Kevin Dong</p>
-    </footer>
-
-    <!-- The lightbox overlay -->
-    <div id="lightbox" class="lightbox-overlay">
-        <span class="close-button" onclick="closeLightbox()">&times;</span>
-        <img id="lightbox-image" src="" alt="Lightbox Image">
-    </div>
-
-    <!-- Link Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
-    <script src="script.js"></script>
-    <script>
-        // Init animation
-        new WOW().init();
-
-        // Read More Text
-        var readMoreLink = document.getElementById('read-more-link');
-        var extraContent = document.querySelector('.extra-content');
-
-        readMoreLink.addEventListener('click', function(event) {
-            event.preventDefault();
-            
-            if (window.getComputedStyle(extraContent).display === 'none') {
-                extraContent.style.display = 'block';
-                setTimeout(function() {
-                    extraContent.style.opacity = '1';
-                }, 10);
-                readMoreLink.textContent = 'Read less';
-            } else {
-                extraContent.style.opacity = '0';
-                setTimeout(function() {
-                    extraContent.style.display = 'none';
-                }, 300);
-                readMoreLink.textContent = 'Read more';
-            }
-        });
-
-        // Hide overlay when clicking outside of the image
-        const overlay = document.getElementById('lightbox');
-        window.addEventListener('click', (event) => {
-            if (event.target === overlay) {
-                closeLightbox()();
-            }
-        });
-    </script>
-</body>
 </html>
