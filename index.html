@@ -20,8 +20,8 @@
             body {
                 margin: 0;
                 font-family: 'Raleway';
-                color: #444;
-                background-color: #fff;
+                color: #e0e0e0;
+                background-color: #121212;
                 line-height: 1.6;
             }
 
@@ -40,15 +40,15 @@
                 top: 0;
                 left: 0;
                 right: 0;
-                background-color: #fff;
-                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                background-color: #1e1e1e;
                 z-index: 1000;
+                border-bottom: 1px solid #333333;
             }
 
             nav .navbar-brand {
                 font-size: 1.5em;
                 text-decoration: none;
-                color: #000;
+                color: #fff;
             }
 
             nav ul {
@@ -64,12 +64,12 @@
 
             nav ul li a {
                 text-decoration: none;
-                color: #000;
+                color: #fff;
                 font-size: 1em;
             }
 
             a {
-                color: #000;
+                color: #90caf9;
             }
 
             main {
@@ -122,10 +122,10 @@
 
             .project {
                 margin-bottom: 20px;
-                padding: 20px;
+                padding: 24px;
                 border-radius: 5px;
-                background-color: #fff;
-                box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05), 0 -2px 12px rgba(0, 0, 0, 0.05);
+                background-color: #1e1e1e;
+                border: 1px solid #333333;
             }
 
             .project p {
@@ -161,7 +161,7 @@
             footer {
                 text-align: center;
                 padding: 10px 0;
-                border-top: 1px solid #ccc;
+                border-top: 1px solid #333333;
                 margin-top: 40px;
                 font-size: 0.9em;
             }
@@ -182,12 +182,14 @@
                 /* Full width */
                 height: 100%;
                 /* Full height */
-                background-color: rgba(0, 0, 0, 0.7);
-                /* Dark background */
                 align-items: center;
                 /* Center the modal vertically */
                 justify-content: center;
                 /* Center the modal horizontally */
+                background: rgba(0, 0, 0, 0.6);
+                /* Dark transparent backdrop */
+                backdrop-filter: blur(8px);
+                /* Optional: Adds a subtle blur effect */
             }
 
             /* Modal content (image) */
@@ -222,6 +224,23 @@
                 text-decoration: none;
                 cursor: pointer;
             }
+
+            /* Dark mode styles */
+            body {
+                background-color: #121212;
+                color: #e0e0e0;
+            }
+
+            .container,
+            .section,
+            .card {
+                color: #e0e0e0;
+            }
+
+            .border,
+            hr {
+                border-color: #333333;
+            }
         </style>
     </head>
 
@@ -240,7 +259,7 @@
         <main class="container">
             <section id="about" class="profile">
                 <h2>About Me</h2>
-                <img src="IMG_5027.jpg" alt="Profile Picture">
+                <img src="profile.jpeg" alt="Profile Picture">
                 <p>
                     I hold a degree in Computer Science from the University of Southern California, where I
                     developed a strong foundation in software development and problem-solving. During my time at
@@ -310,7 +329,7 @@
 
         <footer id="contact">
             <p>Contact me: <a href="mailto:kdong2824@gmail.com">kdong2824@gmail.com</a></p>
-            <p>&copy; 2024 Kevin Dong</p>
+            <p>&copy; 2025 Kevin Dong</p>
         </footer>
         <!-- Lightbox Modal -->
         <div id="lightboxModal" class="lightbox-modal">
