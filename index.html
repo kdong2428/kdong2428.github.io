@@ -226,6 +226,40 @@ footer {
     text-decoration: none;
     cursor: pointer;
 }
+
+/* Scroll-reveal animation classes */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Staggered children within a reveal section */
+.reveal-child {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.reveal-child.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Respect user motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    .reveal,
+    .reveal-child {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+}
         </style>
     </head>
 
@@ -242,7 +276,7 @@ footer {
         </header>
 
         <main class="container">
-            <section id="about" class="profile">
+            <section id="about" class="profile reveal">
                 <h2>About Me</h2>
                 <img src="profile.jpeg" alt="Profile Picture">
                 <p>
@@ -262,10 +296,10 @@ footer {
                 </p>
             </section>
 
-            <section id="projects" class="projects">
+            <section id="projects" class="projects reveal">
                 <h2>Featured Projects</h2>
 
-                <div class="project">
+                <div class="project reveal-child">
                     <h3>Visyfy Lightbox Plugin</h3>
                     <p class="tech">JavaScript, JQuery, PHP, HTML, CSS</p>
                     <p>
@@ -282,7 +316,7 @@ footer {
                 </div>
                 </div>
 
-                <div class="project">
+                <div class="project reveal-child">
                     <h3>DHAL Menu App</h3>
                     <p class="tech">JavaScript, JQuery, PHP, HTML, CSS</p>
                     <p>
@@ -296,7 +330,7 @@ footer {
                     </div>
                 </div>
 
-                <div class="project">
+                <div class="project reveal-child">
                     <h3>Rachel's Kitchen Menu</h3>
                     <p class="tech">JavaScript, PHP, HTML, CSS</p>
                     <p>
@@ -311,7 +345,7 @@ footer {
             </section>
         </main>
 
-        <footer id="contact">
+        <footer id="contact" class="reveal">
             <p>Contact me: <a href="mailto:kdong2824@gmail.com">kdong2824@gmail.com</a></p>
             <p>&copy; 2026 Kevin Dong</p>
         </footer>
@@ -349,6 +383,62 @@ footer {
                 }
             }
 
+        </script>
+        <script>
+            // Scroll-reveal animation using Intersection Observer
+            (function () {
+                // Reveal sections when they enter the viewport
+                var revealElements = document.querySelectorAll('.reveal');
+                var revealChildren = document.querySelectorAll('.reveal-child');
+
+                var observerOptions = {
+                    threshold: 0.15,
+                    rootMargin: '0px 0px -50px 0px'
+                };
+
+                var revealObserver = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+
+                            // Stagger-reveal children within this element
+                            var children = entry.target.querySelectorAll('.reveal-child');
+                            children.forEach(function (child, index) {
+                                child.style.transitionDelay = (index * 120) + 'ms';
+                                child.classList.add('visible');
+                            });
+
+                            revealObserver.unobserve(entry.target);
+                        }
+                    });
+                }, observerOptions);
+
+                revealElements.forEach(function (el) {
+                    revealObserver.observe(el);
+                });
+
+                // Also observe top-level reveal-child elements not inside a .reveal parent
+                var childObserver = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                            childObserver.unobserve(entry.target);
+                        }
+                    });
+                }, observerOptions);
+
+                revealChildren.forEach(function (el) {
+                    if (!el.closest('.reveal')) {
+                        childObserver.observe(el);
+                    }
+                });
+
+                // Trigger the About section immediately (it's likely visible on load)
+                var aboutSection = document.getElementById('about');
+                if (aboutSection) {
+                    aboutSection.classList.add('visible');
+                }
+            })();
         </script>
     </body>
 
