@@ -10,237 +10,256 @@
             href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
             rel="stylesheet">
         <style>
-            html {
-                scroll-behavior: smooth;
-                /* Smooth scrolling for anchor links */
-                scroll-padding-top: 80px;
-                /* Adjust this value based on your header's height */
-            }
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+}
 
-            body {
-                margin: 0;
-                font-family: 'Raleway';
-                color: #e0e0e0;
-                background-color: #121212;
-                line-height: 1.6;
-            }
+body {
+    margin: 0;
+    font-family: 'Raleway', sans-serif;
+    color: #1a1a2e;
+    background-color: #f8f9fa;
+    line-height: 1.6;
+}
 
-            .container {
-                max-width: 800px;
-                margin: 0 auto;
-                padding: 30px;
-            }
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 30px;
+}
 
-            nav {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                padding: 15px 20px;
-                position: fixed;
-                top: 0;
-                left: 0;
-                right: 0;
-                background-color: #1e1e1e;
-                z-index: 1000;
-                border-bottom: 1px solid #333333;
-            }
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #ffffff;
+    z-index: 1000;
+    border-bottom: 1px solid #e0e0e0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
 
-            nav .navbar-brand {
-                font-size: 1.5em;
-                text-decoration: none;
-                color: #fff;
-            }
+nav .navbar-brand {
+    font-size: 1.5em;
+    text-decoration: none;
+    color: #1a1a2e;
+}
 
-            nav ul {
-                list-style: none;
-                display: flex;
-                margin: 0;
-                padding: 0;
-            }
+nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
 
-            nav ul li {
-                margin: 0 10px;
-            }
+nav ul li {
+    margin: 0 10px;
+}
 
-            nav ul li a {
-                text-decoration: none;
-                color: #fff;
-                font-size: 1em;
-            }
+nav ul li a {
+    text-decoration: none;
+    color: #1a1a2e;
+    font-size: 1em;
+    transition: color 0.2s ease;
+}
 
-            a {
-                color: #90caf9;
-            }
+nav ul li a:hover {
+    color: #4A6FA5;
+}
 
-            main {
-                padding-top: 80px;
-            }
+a {
+    color: #4A6FA5;
+    transition: color 0.2s ease;
+}
 
-            #about {
-                padding-top: 57px;
-                margin-bottom: 40px;
-            }
+a:hover {
+    color: #3a5a8a;
+}
 
-            h2 {
-                font-size: 2em;
-            }
+main {
+    padding-top: 80px;
+}
 
-            h3 {
-                margin: 0;
-                font-size: 1.5em;
-            }
+#about {
+    padding-top: 57px;
+    margin-bottom: 40px;
+}
 
-            h2,
-            h3 {
-                font-weight: 500;
-            }
+h2 {
+    font-size: 2em;
+    color: #1a1a2e;
+}
 
-            #about,
-            h2 {
-                text-align: center;
-            }
+h3 {
+    margin: 0;
+    font-size: 1.5em;
+    color: #1a1a2e;
+}
 
-            #about p {
-                text-align: left;
-            }
+h2, h3 {
+    font-weight: 500;
+}
 
-            .profile img {
-                border-radius: 50%;
-                width: 150px;
-                height: 150px;
-                object-fit: cover;
-                margin-bottom: 15px;
-            }
+#about, h2 {
+    text-align: center;
+}
 
-            .projects {
-                margin-top: 40px;
-            }
+#about p {
+    text-align: left;
+}
 
-            .projects h2 {
-                padding-bottom: 15px;
-            }
+.profile img {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    margin-bottom: 15px;
+    border: 3px solid #4A6FA5;
+}
 
-            .project {
-                margin-bottom: 20px;
-                padding: 24px;
-                border-radius: 5px;
-                background-color: #1e1e1e;
-                border: 1px solid #333333;
-            }
+.projects {
+    margin-top: 40px;
+}
 
-            .project p {
-                margin: 10px 0;
-            }
+.projects h2 {
+    padding-bottom: 15px;
+}
 
-            .project .tech {
-                font-style: italic;
-                margin-top: 0px;
-            }
+.project {
+    margin-bottom: 20px;
+    padding: 24px;
+    border-radius: 8px;
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: box-shadow 0.3s ease;
+}
 
-            .project-images {
-                display: flex;
-                gap: 10px;
-                margin-top: 10px;
-                flex-wrap: wrap;
-                justify-content: space-between;
-            }
+.project:hover {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+}
 
-            .project-images img {
-                width: calc(50% - 10px);
-                border-radius: 5px;
-                cursor: pointer;
-                transition: transform 0.3s ease, box-shadow 0.3s ease;
-                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-                /* Subtle shadow around the image */
-            }
+.project p {
+    margin: 10px 0;
+    color: #444444;
+}
 
-            .project-images img:hover {
-                transform: scale(1.05);
-            }
+.project .tech {
+    font-style: italic;
+    margin-top: 0px;
+    color: #4A6FA5;
+}
 
-            footer {
-                text-align: center;
-                padding: 10px 0;
-                border-top: 1px solid #333333;
-                margin-top: 40px;
-                font-size: 0.9em;
-            }
+.project-images {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
 
-            /* Media query for screen width 480px or less */
-            @media screen and (max-width: 480px) {}
+.project-images img {
+    width: calc(50% - 10px);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
 
-            /* Lightbox Modal */
-            .lightbox-modal {
-                display: none;
-                /* Hidden by default */
-                position: fixed;
-                z-index: 1000;
-                /* Ensures modal is on top */
-                left: 0;
-                top: 0;
-                width: 100%;
-                /* Full width */
-                height: 100%;
-                /* Full height */
-                align-items: center;
-                /* Center the modal vertically */
-                justify-content: center;
-                /* Center the modal horizontally */
-                background: rgba(0, 0, 0, 0.6);
-                /* Dark transparent backdrop */
-                backdrop-filter: blur(8px);
-                /* Optional: Adds a subtle blur effect */
-            }
+.project-images img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
 
-            /* Modal content (image) */
-            .lightbox-modal .modal-content {
-                max-width: 600px;
-                /* Max width of the image */
-                width: 100%;
-                /* Ensures the image fills up to the max width */
-                height: auto;
-                /* Maintains aspect ratio */
-                margin: auto;
-                /* Centers the image */
-                border-radius: 5px;
-                padding: 20px;
-            }
+footer {
+    text-align: center;
+    padding: 10px 0;
+    border-top: 1px solid #e0e0e0;
+    margin-top: 40px;
+    font-size: 0.9em;
+    color: #666666;
+}
 
-            /* Close button */
-            .close {
-                position: absolute;
-                top: 10px;
-                right: 20px;
-                color: #fff;
-                font-size: 40px;
-                cursor: pointer;
-                z-index: 1001;
-                /* Makes sure the close button is above the modal content */
-            }
+@media screen and (max-width: 480px) {}
 
-            .close:hover,
-            .close:focus {
-                color: #bbb;
-                text-decoration: none;
-                cursor: pointer;
-            }
+/* Lightbox Modal */
+.lightbox-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(8px);
+}
 
-            /* Dark mode styles */
-            body {
-                background-color: #121212;
-                color: #e0e0e0;
-            }
+.lightbox-modal .modal-content {
+    max-width: 600px;
+    width: 100%;
+    height: auto;
+    margin: auto;
+    border-radius: 5px;
+    padding: 20px;
+}
 
-            .container,
-            .section,
-            .card {
-                color: #e0e0e0;
-            }
+.close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    color: #ffffff;
+    font-size: 40px;
+    cursor: pointer;
+    z-index: 1001;
+}
 
-            .border,
-            hr {
-                border-color: #333333;
-            }
+.close:hover, .close:focus {
+    color: #cccccc;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Scroll-reveal animation classes */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Staggered children within a reveal section */
+.reveal-child {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.reveal-child.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Respect user motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    .reveal,
+    .reveal-child {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+}
         </style>
     </head>
 
@@ -257,7 +276,7 @@
         </header>
 
         <main class="container">
-            <section id="about" class="profile">
+            <section id="about" class="profile reveal">
                 <h2>About Me</h2>
                 <img src="profile.jpeg" alt="Profile Picture">
                 <p>
@@ -267,9 +286,8 @@
                     applications and microservices.
                 </p>
                 <p>
-                    I am currently a Software Engineer at Go Local Interactive, a marketing agency specializing
-                    in self-storage solutions. Here, I leverage my technical skills to build and optimize
-                    software that drives marketing strategies and enhances client engagement.
+                    I am currently a Software Engineer at ReQuant. Here, I leverage my technical skills to
+                    build and optimize software solutions.
                 </p>
                 <p>
                     Outside of work, I am passionate about staying active and exploring new technologies. I
@@ -278,10 +296,10 @@
                 </p>
             </section>
 
-            <section id="projects" class="projects">
+            <section id="projects" class="projects reveal">
                 <h2>Featured Projects</h2>
 
-                <div class="project">
+                <div class="project reveal-child">
                     <h3>Visyfy Lightbox Plugin</h3>
                     <p class="tech">JavaScript, JQuery, PHP, HTML, CSS</p>
                     <p>
@@ -296,9 +314,8 @@
                             class="lightbox">
                     </div>
                 </div>
-                </div>
 
-                <div class="project">
+                <div class="project reveal-child">
                     <h3>DHAL Menu App</h3>
                     <p class="tech">JavaScript, JQuery, PHP, HTML, CSS</p>
                     <p>
@@ -312,7 +329,7 @@
                     </div>
                 </div>
 
-                <div class="project">
+                <div class="project reveal-child">
                     <h3>Rachel's Kitchen Menu</h3>
                     <p class="tech">JavaScript, PHP, HTML, CSS</p>
                     <p>
@@ -327,9 +344,9 @@
             </section>
         </main>
 
-        <footer id="contact">
+        <footer id="contact" class="reveal">
             <p>Contact me: <a href="mailto:kdong2824@gmail.com">kdong2824@gmail.com</a></p>
-            <p>&copy; 2025 Kevin Dong</p>
+            <p>&copy; 2026 Kevin Dong</p>
         </footer>
         <!-- Lightbox Modal -->
         <div id="lightboxModal" class="lightbox-modal">
@@ -365,6 +382,62 @@
                 }
             }
 
+        </script>
+        <script>
+            // Scroll-reveal animation using Intersection Observer
+            (function () {
+                // Reveal sections when they enter the viewport
+                var revealElements = document.querySelectorAll('.reveal');
+                var revealChildren = document.querySelectorAll('.reveal-child');
+
+                var observerOptions = {
+                    threshold: 0.15,
+                    rootMargin: '0px 0px -50px 0px'
+                };
+
+                var revealObserver = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+
+                            // Stagger-reveal children within this element
+                            var children = entry.target.querySelectorAll('.reveal-child');
+                            children.forEach(function (child, index) {
+                                child.style.transitionDelay = (index * 120) + 'ms';
+                                child.classList.add('visible');
+                            });
+
+                            revealObserver.unobserve(entry.target);
+                        }
+                    });
+                }, observerOptions);
+
+                revealElements.forEach(function (el) {
+                    revealObserver.observe(el);
+                });
+
+                // Also observe top-level reveal-child elements not inside a .reveal parent
+                var childObserver = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                            childObserver.unobserve(entry.target);
+                        }
+                    });
+                }, observerOptions);
+
+                revealChildren.forEach(function (el) {
+                    if (!el.closest('.reveal')) {
+                        childObserver.observe(el);
+                    }
+                });
+
+                // Trigger the About section immediately (it's likely visible on load)
+                var aboutSection = document.getElementById('about');
+                if (aboutSection) {
+                    aboutSection.classList.add('visible');
+                }
+            })();
         </script>
     </body>
 
